@@ -18,7 +18,7 @@
 \usepackage{dirtytalk}          % pacote para aspas com comando \say{}
 \usepackage{amssymb}
 \bibliographystyle{abnt}
-
+\usepackage{longtable}
 % ensine o latex a separar em sílabas as palavras que eventualmente ele não souber
 \hyphenation{en-si-na-men-tos a-gra-de-ci-men-to de-se-nha-dos}
 
@@ -44,12 +44,12 @@
 % nominata
 \newcommand{\nominata}{
         \MakeUppercase{\instituicao}\\
-        Reitor: Prof\textsuperscript{a}. Rui Vicente Oppermann \\
-        Vice-Reitor: Prof\textsuperscript{a}. Jane Fraga Tutikian\\
-        Pró-Reitor: Prof. Celso Giannetti Loureiro Chaves\\
+        Reitor: Prof\textsuperscript{a}. Carlos André Bulhões Mendes \\
+        Vice-Reitor: Prof\textsuperscript{a}. Patrícia Helena Lucas Pranke \\
+        Pró-Reitor de Pós-Graduação: Prof. Celso Giannetti Loureiro Chaves\\
         Diretora do Instituto de Informática: Profa
 . Carla Maria Dal Sasso Freitas \\
-        Coordenador do PPGC: Prof. João Luiz Dihl Comba \\
+        Coordenador do PPGC: Prof. Claudio Rosito Jung \\
         Bibliotecária-Chefe do Instituto de Informática: Beatriz Regina Bastos Haro
 }
 
@@ -71,15 +71,14 @@ Dedico este trabalho à todos meus amigos.}
 \chapter*{Agradecimentos}
 
 
-Meu orientador, prof. Dante Barone, que oportunizou o ingresso no mestrado. Devo dizer que relação de orietador-orientando se trasformou numa parceria, onde ele acabou sendo um grande exemplo em minha carreira acadêmica: que continuemos a desenvolver novos projetos.
+Meu orientador, Prof. Dante Barone, que oportunizou o ingresso no mestrado. Devo dizer que relação de orietador-orientando se trasformou numa parceria, onde ele acabou sendo um grande exemplo em minha carreira acadêmica: que continuemos a desenvolver novos projetos.
 
 Agradeço também aos professores do Instituto de Informática da UFRGS cujas
-as aulas tive a oportunidade de assistir e tenho a satisfação de lembrar que sempre acer-
-tei a escolha das cadeiras que cursei, pois todas me ajudaram no desenvolvimento deste
+as aulas tive a oportunidade de assistir e tenho a satisfação de lembrar que sempre acertei a escolha das cadeiras que cursei, pois todas me ajudaram no desenvolvimento deste
 trabalho. De igual forma, agradeço aos colegas do INF com quem interagi, que sempre
 mostraram um notável espírito de colaboração, do qual tantas vezes me beneficiei, em
 especial aos colegas do meu grupo de pesquisa que não só contribuíram com ideias como
-também com a revisaão de meus textos.
+também com a revisão de meus textos.
 
 Minha participação neste programa de mestrado também não teria sido possível
 sem a manifestação de interesse da administração da empresa DBSeller Sistemas Integrados, instituição
@@ -90,8 +89,7 @@ motivos, agradeço também meu atual empregador, a Cooperativa Sicredi, por viab
 Agradeço muito ao Anderson Ferrugem e ao Guilherme Povala  por me ajudar com toda parte de processamento de imagem orientando. Faço também um agradecimento a colega Francielle Marques que sempre me ajudou nos artigos e trabalhos, aconselhando e ajudando o meu desenvolvimento, permitindo um enorme crescimento. 
 
 Por fim, agradeço ao Instituto de Informática da UFRGS e à CAPES por terem
-oportunizando minha participação neste programa de pós-graduação de reconhecida ex-
-celência.
+oportunizando minha participação neste programa de pós-graduação de reconhecida excelência.
 
 
 
@@ -99,12 +97,18 @@ celência.
 % resumo
 \begin{abstract}
 O envelhecimento populacional  vem sendo observado no mundo todo. Este fato, analisado e repercutido pela ciência nos tempos atuais, torna necessário se ater à saúde dessa população mais idosa. Neste contexto uma das doenças que pode surgir é a doença de Alzheimer, que afeta o idoso comprometendo sua integridade física, mental e social.  O diagnóstico clínico ainda é o ponto principal para o diagnóstico dessa forma de demência. Dessa forma, o uso de sistemas computacionais para auxiliar o médico no diagnóstico pode facilitar e ajudar a análise medica. Na medicina, uma das aplicações concebidas é o diagnóstico de doenças através da análise
-de imagens digitais. Esses diagnósticos vêm apresentando resultados significativos e auxiliando
+de imagens digitais.
+A neuroimagem é uma das áreas de pesquisa
+mais promissoras para a detecção de biomarcadores estruturais da DA, onde uma técnica
+não invasiva é usada para capturar uma imagem digital do cérebro, a partir da qual especialistas extraem padrões e características da doença. Nesse contexto, os sistemas de
+diagnóstico assistido por computador (DAC) são abordagens que visam ajudar médicos e
+especialistas na interpretação de dados médicos, para fornecer diagnósticos aos pacientes. Esses diagnósticos vêm apresentando resultados significativos e auxiliando
 profissionais da saúde. Dentre as doenças que estão sendo estudadas com o intuito de
 serem diagnosticadas destaca-se a doença de Alzheimer devido á sua letalidade e consequentemente, a sua necessidade de identificação precoce.
 Diante disso, este trabalho teve como objetivo reconhecer imagens de ressonância magnética com a doença de Alzheimer. Para isso, uniu-se técnicas de processamento de imagens digitais, mais precisamente a análise
 de formas das imagens, com aprendizagem das Redes Neurais Artificiais para possibilitar
 a elaboração de uma aplicação capaz de realizar a diferenciação entre imagens de ressonância magnética de pacientes com a doença de Alzheimer e de pacientes sem a doença  Alzheimer.
+Os resultados da técnica proposta têm uma acurácia de 88,73 \%, o que é um valor razoável de acurácia em comparação com estudos anteriores e revela a eficácia do método proposto.
 
  \end{abstract}
 
@@ -113,12 +117,18 @@ a elaboração de uma aplicação capaz de realizar a diferenciação entre imag
 {Alzheimer's Detection in Magnetic Resonance Imaging Deep Learning}
 {Alzheimer.Machine Learning. Computer vision. Image Processing. Artificial intelligence} % Palavras Chaves: iniciar com letras maiúsculas e separar por '.'
 
-Population aging has been observed all over the world. This fact, analyzed and reflected by science in current times, makes it necessary to focus on the health of this older population. In this context, one of the diseases that may arise is Alzheimer's disease, which affects the elderly, compromising their physical, mental, and social integrity. In this context, one of the diseases that can arise with the highest age is Alzheimer's disease that affects the elderly and
+Population aging has been observed all over the world. This fact, analyzed and reflected by science in current times, makes it necessary to focus on the health of this older population. In this context, one of the diseases that may arise is Alzheimer's disease, which affects the elderly, compromising their physical, mental, and social integrity. Neuroimaging is one of the areas of research
+most promising for the detection of structural biomarkers of AD, where a technique
+non-invasive is used to capture a digital image of the brain, from which specialists extract patterns and characteristics of the disease. Neuroimaging is one of the areas of research
+most promising for the detection of structural biomarkers of AD, where a technique
+Non-invasive is used to capture a digital image of the brain, from which specialists extract patterns and characteristics of the disease. In this context, information systems
+Computer-aided diagnostics (CAD) are approaches that aim to help doctors and
+specialists in the interpretation of medical data, to provide diagnostics to patients. In this context, one of the diseases that can arise with the highest age is Alzheimer's disease that affects the elderly and
 physical, mental, and social integrity. Clinical diagnosis is still the key
 to the diagnosis of this form of dementia. In this way, the use of computer systems to aid the physician in the diagnosis can facilitate and assist the medical analysis. In medicine, one of the applications designed is the diagnosis of diseases through
 digital images. These diagnoses have been presenting significant results and
 health professionals. Among the diseases that are being studied with the aim of
-Alzheimer's disease stands out because of its lethality and, consequently, its need for early identification. Therefore, this work will aim to recognize magnetic resonance imaging with Alzheimer's disease. To this end, digital image processing techniques were combined, more precisely the analysis of the images, with the learning power of the Artificial Neural Networks to enable the development of an application capable of differentiating between MRI images of patients with Alzheimer's disease and patients without Alzheimer's disease.
+Alzheimer's disease stands out because of its lethality and, consequently, its need for early identification. Therefore, this work will aim to recognize magnetic resonance imaging with Alzheimer's disease. To this end, digital image processing techniques were combined, more precisely the analysis of the images, with the learning power of the Artificial Neural Networks to enable the development of an application capable of differentiating between MRI images of patients with Alzheimer's disease and patients without Alzheimer's disease. The results of the proposed technique have an accuracy of 88.73 \%, which is a reasonable value of accuracy compared to previous studies and reveals the effectiveness of the proposed method.
 \end{englishabstract}
 
 % lista de abreviaturas e siglas
@@ -170,7 +180,7 @@ Alzheimer's disease stands out because of its lethality and, consequently, its n
 Os avanços tecnológicos têm modificado os paradigmas de uso de
 computadores com o passar do tempo. Nos primórdios, o poder computacional
 para realizar tarefas de processamento de imagens significativas foram desenvolvidos no início da década de 1960. O processamento digital de imagens teve seu início  quando
-imagens digitalizadas para jornais eram enviadas por meio de cabo submarino de Londres para Nova Iorque em 1920, para diminuir o tempo do envio de uma fotografia. Outro evento importante  que se  sucedeu foi o início do
+imagens digitalizadas para jornais eram enviadas através de cabo submarino de Londres para Nova Iorque em 1920, para diminuir o tempo do envio de uma fotografia. Outro evento importante  que se  sucedeu foi o início do
 programa espacial, onde imagens da Lua foram processadas com o intuito de remover distorções de imagem, estas técnicas serviram de base para métodos aprimorados de realce e restauração de imagens de outros programas \cite{gonzalez2010processamento}. Foi necessária a combinação desses dois avanços para chamar a atenção ao potencial dos conceitos de processamento digital de imagens. Paralelamente a essas aplicações espaciais, técnicas
 de processamento digital de imagens começaram a ser desenvolvidas no início da década de 1970 para serem utilizadas na  medicina. Dentro dessas imagens desenvolvidas temos as imagens de ressonância magnética \cite{gonzalez2010processamento}. 
 
@@ -180,7 +190,7 @@ A ressonância magnética se refere ao uso de campos magnéticos e sinais eletro
 
 A neurologia é uma especialidade da medicina que estuda as doenças
 estruturais do sistema nervoso. No entanto, devido aos avanços contínuos das
-pesquisas no campo das Neurociências e devido à complexidade desta área, para uma efetiva aptidão em neurologia é necessária uma especialização que é feita por meio de Residência Médica \cite{reed2013neurologia}. A neurociência  envolve uma grande serie de questões sobre como se desenvolve e se organiza o sistema nervoso no homem e nos animais, e de como ele funciona para gerar um comportamento  \cite{purves2008neuroscience}
+pesquisas no campo das Neurociências e devido à complexidade desta área, para uma efetiva aptidão em neurologia é necessária uma especialização que é feita por meio de Residência Médica \cite{reed2013neurologia}. A neurociência  envolve uma grande serie de questões sobre como se desenvolve e se organiza o sistema nervoso no homem e nos animais, e de como ele funciona para gerar um comportamento  \cite{purves2008neuroscience}.
 
 
 A Doença de Alzheimer é uma doença cerebral, degenerativa, que produz atrofia progressiva, com início mais frequentemente após os 65 anos de idade, essa doença produz a perda das habilidades de pensar,raciocinar,memorizar, que afeta as áreas da linguagem e produz alterações no comportamento \cite{alzheimer2003funccoes}. A doença de Alzheimer começa inicialmente na parte do cérebro que controla a memória, o raciocínio e a linguagem. Entretanto, pode atingir outras regiões do cérebro, comprometendo assim outras funções cognitivas. O diagnóstico da doença de Alzheimer é feito fundamentalmente através de critérios clínicos preestabelecidos com eliminação de outras possíveis causas, essa eliminação e feita através de exames
@@ -211,21 +221,21 @@ para classificação \cite{goodfellow2016deep}.
 
 As tecnologias foram evoluindo possibilitando o desenvolvimento de sistemas computacionais que auxiliassem médicos e profissionais da área da saúde na análise de doenças. O diagnóstico de doenças com sistemas inteligentes de aprendizado é uma ideia já explorada, mas ainda um campo pouco desenvolvido. Sistemas inteligentes são sistemas que tentam simular o pensamento humano e tentam de forma lógica resolver problemas que pessoas resolveriam no cotidiano. Uma das características de sistemas inteligentes é justamente a capacidade de aprender, de se adaptar a uma situação nova assim como um ser humano se adaptaria. 
 
-A difícil tarefa de analisar imagens da doença de  Alzheimer para o diagnóstico da mesma vem influenciado o desenvolvimento de novos métodos que auxiliem o ser humano na realização dessa tarefa.  Isso mostra que sistemas inteligentes que trabalham com imagens passam a ser de grande interesse e com um potencial enorme a ser explorado como ferramentas de apoio ao diagnóstico de doenças neurológicas.  A doença de  Alzheimer foi definida , pois apresenta características visuais possíveis de serem visualizadas por imagem de ressonância magnética . Com isso o desenvolvimento de uma aplicação  capaz de auxiliar a medicina  no reconhecimento da doença  de Alzheimer  pode trazer grandes benefícios para área da saúde.  
+A difícil tarefa de analisar imagens da doença de  Alzheimer para o diagnóstico da mesma vem influenciado o desenvolvimento de novos métodos que auxiliem o ser humano na realização dessa tarefa.  Isso mostra que sistemas inteligentes que trabalham com imagens passam a ser de grande interesse e com um potencial enorme a ser explorado como ferramentas de apoio ao diagnóstico de doenças neurológicas.  A doença de  Alzheimer foi definida, pois apresenta características visuais possíveis de serem visualizadas por imagem de ressonância magnética . Com isso o desenvolvimento de uma aplicação  capaz de auxiliar a medicina  no reconhecimento da doença  de Alzheimer  pode trazer grandes benefícios para área da saúde.  
 
 \chapter{FUNDAMENTAÇÃO TEÓRICA} 
 
 
 \section{Doença de Alzheimer}
 
-A doença de Alzheimer é a patologia neurodegenerativa mais freqüente associada à idade, cujas manifestações cognitivas e neuropsiquiátricas resultam em deficiência progressiva e incapacitação. A doença afeta aproximadamente 10\% dos indivíduos com idade superior a 65 anos e 40\% acima de 80 anos. Estima-se que, em 2050, mais de 25\% da população mundial será idosa, aumentando, assim, a prevalência da doença. O sintoma inicial da doença é caracterizado pela perda progressiva da memória recente. Com a evolução da patologia, outras alterações ocorrem na memória e na cognição, entre elas as deficiências de linguagem e nas funções vísuo-espaciais. Esses sintomas são freqüentemente acompanhados por distúrbios comportamentais, incluindo agressividade, depressão e alucinações. 
+A doença de Alzheimer é a patologia neurodegenerativa mais freqüente associada à idade, cujas manifestações cognitivas e neuropsiquiátricas resultam em deficiência progressiva e incapacitação. A doença afeta aproximadamente 10\% dos indivíduos com idade superior a 65 anos e 40\% acima de 80 anos \cite{sereniki2008doencca}. Estima-se que, em 2050, mais de 25\% da população mundial será idosa, aumentando, assim, a prevalência da doença \cite{sereniki2008doencca}. O sintoma inicial da doença é caracterizado pela perda progressiva da memória recente. Com a evolução da patologia, outras alterações ocorrem na memória e na cognição, entre elas as deficiências de linguagem e nas funções vísuo-espaciais \cite{forlenza2005tratamento}. Esses sintomas são frequentemente acompanhados por distúrbios comportamentais, incluindo agressividade, depressão e alucinações. 
 
 O diagnóstico da DA é feito fundamentalmente através de critérios clínicos preestabelecidos juntamente com a exclusão de outras possíveis causas para a demência. A exclusão de outras causas é feita através de um conjunto composto pelo exame clínico, por exames
 laboratoriais e pela neuroimagem cerebral. No exame clínico deve-se abordar a história prévia do paciente como doenças preexistentes, traumas, cirurgias, uso de
-álcool ou outras substâncias, uso de medicações, exposições ambientais a tóxicos, entre outros fatores que podem ocasionar prejuízo cognitivo e até mesmo a síndrome demencial propriamente dita. O histórico médico do paciente geralmente
+álcool ou outras substâncias, uso de medicações, exposições ambientais a tóxicos, entre outros fatores que podem ocasionar prejuízo cognitivo e até mesmo a síndrome demencial propriamente dita \cite{aprahamian2009doencca}. O histórico médico do paciente geralmente
 conta com a presença de um familiar ou cuidador para
 auxiliar nas informações obtidas através do paciente.
-O Alzheimer ainda não  possue cura, mas existem tratamentos eficazes que podem prolongar a vida e o bem-estar do paciente. O exame físico visa identificar déficits neurológicos focais,
+O Alzheimer ainda não  possuí cura, mas existem tratamentos eficazes que podem prolongar a vida e o bem-estar do paciente. O exame físico visa identificar déficits neurológicos focais,
 como paresias e parestesias, sinais de hidrocefalia, como
 alteração de marcha e incontinência urinária, alterações
 na motricidade, lentificação e tremores, sugestivos de
@@ -275,10 +285,10 @@ início do programa espacial norte-americano. O uso de técnicas computacionais 
 aprimoramento de imagens teve início no Jet Propulsion Laboratory (Pasadena, California -
 EUA) em 1964, quando imagens da lua transmitidas por uma sonda Ranger2
 eram processadas por computador para corrigir vários tipos de distorção inerentes à câmera de TV acoplada à
-sonda. Estas técnicas serviram de base para métodos aprimorados de realce e restauração de
+sonda \cite{gonzalez2010processamento}. Estas técnicas serviram de base para métodos aprimorados de realce e restauração de
 imagens de outros programas espaciais posteriores, como as expedições tripuladas da série
 Apollo, por exemplo. De 1964 aos dias atuais, a área de processamento de imagens vem apresentando
-crescimento expressivo e suas aplicações permeiam quase todos os ramos da atividade humana.
+crescimento expressivo e suas aplicações permeiam quase todos os ramos da atividade humana \cite{de2000processamento}.
 Em Medicina, o uso de imagens no diagnóstico médico tornou-se rotineiro e os avanços em
 processamento de imagens vêm permitindo tanto o desenvolvimento de novos equipamentos
 quanto a maior facilidade de interpretação de imagens produzidas por equipamentos mais
@@ -293,8 +303,8 @@ laboratoriais com alto grau de precisão e repetibilidade.
 
 \subsection{Ressonância Magnética}
 A imagem por ressonância magnética é hoje um método de diagnóstico já estabelecido na prática  pelas clínicas e em crescente desenvolvimento . Por razões físicas e pela abundância, o núcleo de hidrogênio (próton) é o elemento utilizado para produzir imagens de seres biológicos. Assim, para que esses átomos sejam orientados numa certa direção, é necessário um campo magnético intenso - habitualmente cerca de 1,5 Teslas. Entendida essa etapa, é possível associar o nome "magnética". Falta entender "ressonância" \cite{hage2009imagem}. A etapa seguinte é a excitação. Sabe-se que cada núcleo de
-hidrogênio “vibra” numa determinada freqüência proporcional
-ao campo magnético em que está localizado. Assim, em 1,5 T, o hidrogênio tem freqüência de 63,8 MHz. O aparelho emite então uma onda eletromagnética nessa mesma freqüência. Existe uma transferência de energia da onda emitida pelo equipamento para os átomos de hidrogênio, fenômeno conhecido como ressonância \cite{hage2009imagem}. O aparelho utilizado na  ressonância magnética  pode ser visualizado na \ref{fig:ressonaciaAparelho}.
+hidrogênio “vibra” numa determinada frequência proporcional
+ao campo magnético em que está localizado. Assim, em 1,5 T, o hidrogênio tem frequência de 63,8 MHz. O aparelho emite então uma onda eletromagnética nessa mesma frequência. Existe uma transferência de energia da onda emitida pelo equipamento para os átomos de hidrogênio, fenômeno conhecido como ressonância \cite{hage2009imagem}. O aparelho utilizado na  ressonância magnética  pode ser visualizado na figura \ref{fig:ressonaciaAparelho}.
 
 \begin{figure}[h]
     \centering
@@ -330,26 +340,87 @@ de leque. No lado oposto a essa fonte, está localizada uma série de detectores
 
 O aparelho de tomografia computadorizada tradicional apresenta três componentes principais : 1) o gantry, no interior do qual se localizam o tubo de raios-x e um anel de detectores de radiação, constituído por cristais de cintilação; 2) a mesa, que acomoda o paciente deitado e que, durante o exame, movimenta-se em direção ao interior do gantry e 3) o computador, que reconstrói a imagem tomográfica a partir das informações adquiridas no gantry.
 
-Devemos ter conhecimento que a imagem de tomografia computadorizada ainda apresenta uma terceira dimensão, representada pela espessura do corte. Assim, uma outra palavra deve ser familiar aos profissionais que trabalham com imagens tridimensionais: o voxel. Denomina-se voxel a menor unidade da imagem na espessura do corte, podendo variar de 0,5 a 20mm, a depender da região do corpo a ser escaneada e da qualidade da imagem desejada.
+\begin{figure}[h]
+    \centering
+    \caption{Imagens de exemplo Tomografia computadorizada}
+    \includegraphics[scale=0.60]{figuras/tomografia-computadorizada-do-cranio-tesla-imagem.jpg}
+    \centerline{Fonte:www.teslaimagem.com.br}
+    \label{fig:tomocomp}
+\end{figure}
+
+Devemos ter conhecimento que a imagem de tomografia computadorizada ainda apresenta uma terceira dimensão, representada pela espessura do corte. Assim, uma outra palavra deve ser familiar aos profissionais que trabalham com imagens tridimensionais: o voxel. Denomina-se voxel a menor unidade da imagem na espessura do corte, podendo variar de 0,5 a 20mm, a depender da região do corpo a ser escaneada e da qualidade da imagem desejada. Na figura \ref{fig:tomocomp} podemos ver exemplo de imagem gerada apartir de uma  tomografia computadorizada, veja que  a imagem e muito semelhante a imagem de ressonância magnética.
+
+
+
 
 \subsection{Pet Scan}
-A tomografia por emissão de pósitrons (PET) associada à tomografia computadorizada (PET/CT), introduzida em 1998, teve impacto notório, principalmente na oncologia. A sua grande vantagem é a propriedade de produzir imagens que identificam as alterações metabólicas e funcionais em todo o organismo completo e tambem é capaz de detectar os tumores até mesmo antes que se manifestem anatomicamente. 
+A tomografia por emissão de pósitrons (PET) associada à tomografia computadorizada (PET/CT), introduzida em 1998, teve impacto notório, principalmente na oncologia \cite{parks1988cerebral}. A sua grande vantagem é a propriedade de produzir imagens que identificam as alterações metabólicas e funcionais em todo o organismo completo e também é capaz de detectar os tumores até mesmo antes que se manifestem anatomicamente. O PET/CT é um dos exames de imagem mais modernos usados  por exemplo na oncologia. Ele combina duas modalidades de exame, a tomografia computadorizada, e a emissão de pósitrons, capaz de detectar a atividade metabólica das células do corpo \cite{parks1988cerebral}. Na figura \ref{fig:petct}, podemos ver um exemplo da imagem gerada pelo PET/CT.
+
+\begin{figure}[h]
+    \centering
+    \caption{Imagens de exemplo PET/CT do Cérebro}
+    \includegraphics[scale=0.35]{figuras/alzheimersprogressionpet_1227001-860x475.jpg}
+    \centerline{Fonte:www.dimen.com.br}
+    \label{fig:petct}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Imagens de Exemplo Aparelho PET/CT}
+    \includegraphics[scale=0.35]{figuras/discovery630-medicina-nuclear.jpg}
+    \centerline{Fonte:www.cetac.com.br}
+    \label{fig:petctapa}
+\end{figure}
 
 O PET-CT é indicado em casos suspeitos de câncer, para análise do estágio de um tumor, para avaliação de eficácia de tratamento, para planejamento de radioterapia, para verificar a saúde de corações que já tenham sofrido infartos e para analisar a função cerebral em detalhes.
-Para realizá-lo, o paciente recebe, por via venosa, uma substância que emite baixas doses de radiação a base de glicose. Com isso, o médico consegue observar o consumo da glicose em cada parte do corpo e localizar possíveis problemas.
+Para realizá-lo, o paciente recebe, por via venosa, uma substância que emite baixas doses de radiação a base de glicose. Com isso, o médico consegue observar o consumo da glicose em cada parte do corpo e localizar possíveis problemas. Na figura
+\ref{fig:petctapa} temos um exemplo do aparelho PET/CT, onde e realizado o exame.
 
+
+
+\begin{table}[]
+\caption{Comparativo das três formas de aquisição de imagem}
+\label{fig:wrapfig}
+\begin{tabular}{|l|l|l|l|}
+\hline
+ &
+  \textbf{\begin{tabular}[c]{@{}l@{}}Ressonância \\ Magnética\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}l@{}}Tomografia \\ Computadorizada\end{tabular}} &
+  \textbf{PET/Scan} \\ \hline
+Técnica &
+  \begin{tabular}[c]{@{}l@{}}As imagens são geradas em \\ alta definição através de \\ interação entre um \\ campo magnético,\\ ondas de rádio e o elemento\\ químico hidrogênio, \\ o mais abundante nos\\ tecidos corporais.\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}A técnica da tomografia\\ utiliza raio-X em um \\ equipamento de \\ alta tecnologia,\\ que permite \\ fotografar o corpo \\ humano em \\ “fatias” e depois\\ reconstruir, \\ diferenciando os\\ tecidos através\\ da sua densidade.\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Tomografia \\ Por Emissão \\ de Pósitrons. \\ Utiliza radiação\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Tempo\\  de exame\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Mais demorado, com \\ duração de\\ cerca de 15-20 minutos \\ nos exames \\ mais simples até \\ cerca de 60-80\\ minutos nos de \\ maior complexidade.\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Muito rápido, com duração\\ média em torno de\\ 2-5 minutos.\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Após um repouso \\ de 60 minutos,\\ necessário para \\ a concentração \\ do radiofármaco\\ no organismo, \\ é feita a aquisição \\ das imagens\end{tabular} \\ \hline
+Contraste &
+  \begin{tabular}[c]{@{}l@{}}Utiliza a substância \\ gadolínio por\\ via endovenosa. \\ Reações alérgicas\\ são raríssimas. Pessoas com\\ insuficiência renal grave \\ não devem realizar o exame.\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Utiliza substância a\\  base de iodo, \\ que pode ser ingerida,\\  injetada por\\ via endovenosa ou\\  introduzida por \\ via retal ou\\ sondas/cateteres.\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Utiliza substância \\ chamada de \\ FDG\\ (fluordesoxiglicose).\\ Essa medicação\\  nada mais é do\\ que glicose (açúcar) \\ levemente \\ alterada \\ quimicamente com \\ uma partícula\\  radioativa (o flúor)\end{tabular} \\ \hline
+Vantagens &
+  \begin{tabular}[c]{@{}l@{}}Não utiliza radiação,\\  não há efeitos\\  colaterais ou danos à saúde \\ pela exposição ao campo \\ magnético e ondas de rádio \\ e menor chance de \\ reação alérgica. \\ Há maior diferenciação\\  na imagem \\ de tecidos moles e mais \\ técnicas que \\ permitem estudo \\ de doenças e tumores.\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}É menos sensível à \\ movimentação \\ do paciente durante \\ a realização do exame, \\ não apresenta risco a \\ pacientes com \\ dispositivos médicos\\  implantáveis.\\ Também é um exame mais \\ rápido de ser realizado e o \\ aparelho é maior e\\  mais aberto. \\ Exame de menor custo.\end{tabular} &
+  \begin{tabular}[c]{@{}l@{}}Permite o mapeamento \\ de diferentes \\ substâncias químicas \\ no organismo.\\ A vantagem da \\ PET Scan sobre os\\  demais exames de \\ imagens é que \\ ela permite\\  medir a atividade \\ metabólica das\\  lesões demonstrando \\ assim o grau de \\ atividade delas.\end{tabular} \\ \hline
+\end{tabular}
+\caption{Fonte: Publicação segundo www.ecomax-cdi.com.br}
+\end{table}
+
+
+Na tabela  \ref{fig:wrapfig}, pode observar uma comparação sobre alguns critérios de cada metodo de aquisição de imagens  mecionadas no texto. Naturalmente cada exame tem outras características não abordadas.
 
 
 \section{Normalização MNI}
 
 A normalização espacial é um processo de transformação de uma imagem MRI
 para corresponder a um cérebro modelo padrão.
-O \textit{Montreal Neurological Institute} (MNI) desenvolveu uma série de imagens semelhantes ao  modelo de coordenadas cerebrais Talairach que foram baseadas na média de muitas imagem de exames de ressonância magnética (MRI) normais. Essas imagens são normalmente utilizadas por \textit{software} de normalização espacial automatizada e devem refletir a média. O \textit{International Consortium of Brain Mapping} (ICBM) adotou esses modelos como um padrão internacional. A normalização espacial remodela o cérebro de um indivíduo para corresponder à forma e ao tamanho de uma imagem padrão. Esta é uma etapa crucial necessária para análises estatísticas em nível de grupo. Os modelos padrão mais populares são derivados de exames de ressonância magnética de jovens e adultos. 
+O \textit{Montreal Neurological Institute} (MNI) desenvolveu uma série de imagens semelhantes ao  modelo de coordenadas cerebrais Talairach que foram baseadas na média de muitas imagem de exames de ressonância magnética (MRI) normais. Essas imagens são normalmente utilizadas por \textit{software} de normalização espacial automatizada e devem refletir a média \cite{moraisinfluencia}. O \textit{International Consortium of Brain Mapping} (ICBM) adotou esses modelos como um padrão internacional. A normalização espacial remodela o cérebro de um indivíduo para corresponder à forma e ao tamanho de uma imagem padrão. Esta é uma etapa crucial necessária para análises estatísticas em nível de grupo. Os modelos padrão mais populares são derivados de exames de ressonância magnética de jovens e adultos. 
 
 Na figura \ref{fig:normalizationmri} podemos ver as etapas do processamento da imagem. As imagens funcionais para cada modelo são realinhadas para corrigir o movimento do mesmo e, em seguida, são registradas em conjunto com uma imagem estrutural. Se necessário, as imagens são normalizadas espacialmente para alinhar os cérebros entre os modelos. A análise estatística tenta detectar áreas que tenham sido ativadas pela manipulação experimental. Os resultados podem ser exibidos em imagens estruturais individuais ou médias.
 
 A análise estatística pode envolver qualquer um de diversos métodos , a maioria dos quais resulta em algum índice a cada \textit{voxel} de como o cérebro reagiu à manipulação de interesse experimental. Este mapa de ativação pode ser \textit{thresholded} para identificar regiões do cérebro ativadas. Se escaneamos vários modelos,então podemos realizar uma interpolação entre os modelos para
-encontrar regiões resultantes do processo . A estimativa de localização de uma ativação estará sujeita a algum erro devido a ruído estatístico.
+encontrar regiões resultantes do processo  \cite{brett2002problem}. A estimativa de localização de uma ativação estará sujeita a algum erro devido a ruído estatístico.
 
 A etapa final da análise é a rotulagem de as áreas ativadas. As etiquetas podem estar em termos de coordenadas estereotáxicas, macroanatomia,microanatomia ou  em função.
 
@@ -367,7 +438,7 @@ projetado para dar a melhor correspondência espacial de áreas homólogas entre
 
 \section{Ferramentas de normalização avançadas}
 
-Existem  algumas ferramentos para trabalhar com processamento de imagem, mas concerteza não tão especificas quanto a ferramenta ANTs \footnote[1]{https://github.com/ANTsX/ANTs} ( \textit{Advanced Normalization Tools}). ANTs é um conjunto de ferramentas, que possui  diversas bibliotecas que nos permite explorar estatisticamente grandes conjuntos de imagens biomédicas.
+Existem  algumas ferramentas para trabalhar com processamento de imagem, mas concerteza não tão especificas quanto a ferramenta ANTs \footnote[1]{https://github.com/ANTsX/ANTs} ( \textit{Advanced Normalization Tools}). ANTs é um conjunto de ferramentas, que possui  diversas bibliotecas que nos permite explorar estatisticamente grandes conjuntos de imagens biomédicas.
 ANTs depende da biblioteca \textit{Insight ToolKit} (ITK) , uma biblioteca de processamento de imagens médicas amplamente usada para a qual os desenvolvedores de ANTs contribuem para a biblioteca. O ITK é
 patrocinado pelo NIH \cite{tustison2014advanced}. Fundada em 2008 com a conceituada estrutura de registro de imagens Symmetric Normalization, a biblioteca ANTs cresceu para incluir funcionalidades adicionais. Aprimoramentos recentes incluem recursos de estatística, visualização e aprendizado profundo por meio da interface com o projeto estatístico R (ANTsR) e o Python (ANTsPy). Adicionalmente, as extensões de aprendizado profundo correspondentes ANTsRNet e ANTsPyNet (construídas nas populares bibliotecas TensorFlow / Keras) contêm várias arquiteturas de rede populares e modelos treinados para aplicativos específicos \cite{tustison2014advanced}.
 
@@ -378,7 +449,7 @@ Existe também outra ferramenta de pre-processamento de imagem que é a  MINC To
 
 A segmentação é o processo que subdivide uma
 imagem em regiões que satisfaçam alguns critérios
-de similaridade ou descontinuidade pré-definidos. Frequentemente, o resultado não é uma imagem, mas um conjunto de regiões/objectos.
+de similaridade ou descontinuidade pré-definidos. Frequentemente, o resultado não é uma imagem, mas um conjunto de regiões/objetos.
 A definição para a segmentação de imagens esta diretamente relacionada à área na qual
 será aplicada. Dentro da área de visão computacional, a segmentação refere-se ao
 processo de decomposição de uma imagem digital em vários segmentos (regiões) que a
@@ -399,14 +470,12 @@ esses métodos devem ser seguidos de processamentos visando sanar essas falhas. 
 técnicas de processamento que realizam esse tipo tratamento não serão abordadas aqui,
 maiores detalhes a respeito ver Gonzalez e Woods (1987) e Hough (1962). 
 
-
-
 A detecção de similaridade tem como fundamento a observação do interior dos objetos e
 não as fronteiras que os delimitam. Para tanto, parte da idealização que os pixels que
 compõe um objeto têm propriedades similares enquanto que pixels de objetos distintos
 têm propriedades distintas.
 A formulação básica adotada para este tipo de abordagem é dada por \cite{fu1981survey}.
-Segundo o autor, se considerarmos R como sendo uma imagem, a segmentação é a
+Segundo o autores, se considerarmos R como sendo uma imagem, a segmentação é a
 decomposição de R em n regiões R1, R2, ..., Rn de tal forma que:
 
 
@@ -432,13 +501,13 @@ resultados insatisfatórios \cite{davies2004machine}.
 
 \section{Aprendizado de Máquina}
 
-Na computação, problemas são geralmente resolvidos por um algoritmo que especifica um sequência de passos para a solução. Entretanto, é difícil definir um algoritmo que resolva alguns problemas que humanos realizam com facilidade diariamente, por exemplo, reconhecer um rosto ou compreender um texto \cite{mitchell1997machine}. É difícil saber exatamente quais características do rosto devem ser observadas para que possamos reconhecê-lo mesmo quando aparece com um óculos, uma barba, ou de um ângulo totalmente diferente. Com imagens digitais, da mesma forma, não é fácil tornar explícito nosso o objeto que queremos rotular ou reconhecer na imagem \cite{mitchell1997machine}.
+Na computação, problemas são geralmente resolvidos por um algoritmo que especifica uma sequência de passos para a solução. Entretanto, é difícil definir um algoritmo que resolva alguns problemas que humanos realizam com facilidade diariamente, por exemplo, reconhecer um rosto ou compreender um texto \cite{watkins2001structural}. É difícil saber exatamente quais características do rosto devem ser observadas para que possamos reconhecê-lo mesmo quando aparece com um óculos, uma barba, ou de um ângulo totalmente diferente. Com imagens digitais, da mesma forma, não é fácil tornar explícito nosso o objeto que queremos rotular ou reconhecer na imagem \cite{watkins2001structural}.
 
 Apesar da dificuldade de programar computadores para realizar essas tarefas complexas, elas hoje são frequente e constantemente realizadas usando a computação. Como por exemplo temos os carros autônomos, que utilizam algoritmos de aprendizado de máquina, para reconhecimento de objetos capturados pela câmera do veiculo. Outros casos
-típicos que estão presentes no dia a dia da maioria das pessoas atualmente incluem sistemas de anti-spam como o do Gmail, que afirma ter precisão de 99,9\% para distinguir mensagens legítimas de spam e phishing, conforme Wen (2020), e o reconhecimento facial do Facebook, que usa fotos do usuário para criar um número único chamado gabarito e depois o compara a fotos, vídeos e lives para encontrar os outros conteúdos nos quais o usuário aparece, Facebook (2020).
+típicos que estão presentes no dia a dia da maioria das pessoas atualmente incluem sistemas de anti-spam como o do Gmail, que afirma ter precisão de 99,9\% para distinguir mensagens legítimas de spam e phishing, conforme Wen (2020), e o reconhecimento facial do Facebook, que usa fotos do usuário para criar um número único chamado gabarito e depois o compara a fotos, vídeos e lives para encontrar os outros conteúdos nos quais o usuário aparece, \cite{bachrach2012personality} .
 
 Esses dois exemplos, assim como inúmeras outras soluções semelhantes, usam
-técnicas de Inteligência Artificial (IA), especialmente o Aprendizado de Máquinas (do inglês Machine Learning ML), para instruir computadores a realizar tarefas altamente complexas cuja solução dificilmente poderia ser codificada de maneira explícita através de um algoritmo e que também não poderiam ser realizadas com a mesma eficiência por
+técnicas de Inteligência Artificial (IA), especialmente o Aprendizado de Máquinas (\textit{Machine Learning}), para instruir computadores a realizar tarefas altamente complexas cuja solução dificilmente poderia ser codificada de maneira explícita através de um algoritmo e que também não poderiam ser realizadas com a mesma eficiência por
 humanos, dada a imensa quantidade de informações que precisam ser consideradas para sua execução.
 
 Um problema para o Aprendizado de Máquinas, segundo Mitchell (1997), pode
@@ -446,7 +515,7 @@ ser definido precisamente como melhorar alguma medida de desempenho P quando exe
 cutando uma tarefa T através de algum tipo de experiência de treinamento E. Por exem-
 plo, aprender a filtrar spam é aprender uma função (hipótese) que mapeia qualquer e-mail
 de entrada para um rótulo de spam ou não-spam. Quando esses três componentes (T , P ,
-E) estão especificados, tem-se um problema de aprendizado bem definido.
+E) estão especificados, tem-se um problema de aprendizado bem definido \cite{mitchellmachine}.
 
 Tarefas de classificação têm como retorno um valor de um espaço discreto, comu-
 mente chamado atributo-alvo ou classe-alvo. O tema da classificação é bastante estudado
@@ -459,13 +528,13 @@ um determinado objeto pertence. Uma das técnica de Aprendizado de Máquina é a
 
 As redes neurais profundas conhecida como \textit{Deep Learning}. Segundo Simon \cite{haykin2007redes} redes neurais são sistemas com nós interconectados que funcionam como os neurônios do cérebro humano. Usando algoritmos, elas podem reconhecer padrões escondidos e correlações em dados brutos, agrupálos e classificálos, e com o tempo aprender e melhorar continuamente.
 
-O aprendizado profundo permite que modelos computacionais compostos de múltiplas camadas de processamento aprendam representações de dados com múltiplos níveis de abstração. Esses métodos melhoraram drasticamente o estado da arte em reconhecimento de fala, reconhecimento de objetos visuais, detecção de objetos e muitos outros domínios, como descoberta de drogas e genômica. O aprendizado profundo descobre uma estrutura complexa em grandes conjuntos de dados usando o algoritmo de retropropagação para indicar como uma máquina deve alterar seus parâmetros internos que são usados para calcular a representação em cada camada da representação na camada anterior. Redes profundamente convolucionais trouxeram avanços no processamento de imagens, vídeo, fala e áudio.
+O aprendizado profundo permite que modelos computacionais compostos de múltiplas camadas de processamento aprendam representações de dados com múltiplos níveis de abstração. Esses métodos melhoraram drasticamente o estado da arte em reconhecimento de fala, reconhecimento de objetos visuais, detecção de objetos e muitos outros domínios, como descoberta de drogas e genômica. O aprendizado profundo descobre uma estrutura complexa em grandes conjuntos de dados usando o algoritmo de retro propagação para indicar como uma máquina deve alterar seus parâmetros internos que são usados para calcular a representação em cada camada da representação na camada anterior. Redes profundamente convolucionais trouxeram avanços no processamento de imagens, vídeo, fala e áudio.
 
 
-As redes neurais podem existir com apenas uma camada de neurônios, situação em que, apesar de trabalharmos com uma rede neural, não estamos utilizando deep learning.
+As redes neurais podem existir com apenas uma camada de neurônios, situação em que, apesar de trabalharmos com uma rede neural, não estamos utilizando \textit{deep learning}.
 Um exemplo de rede neural rasa é aquele que possui apenas uma camada oculta. Isso significa que teremos apenas uma camada oculta de neurônios entre os dados de entrada e saída da rede.
 
-Na prática, quando as redes neurais possuem muitas camadas ocultas, trata-se de deep learning. Estas camadas ocultas também são compostas por neurônios, sendo que o valor de cada um será definido da mesma forma que nas redes neurais rasas. Na Figura \ref{fig:redesneuraisprof} temos exemplo de rede neural profunda. Um ponto importante a se observar nas redes neurais profundas é que o significado do resultado (valor) de cada neurônio existente nas camadas ocultas costuma ser obscuro, não sendo possível para nós a sua interpretação. Teremos apenas as evidências do resultado final da rede neural, que poderá melhorar ou não de acordo com a adição de mais camadas ocultas a rede. Também vale apena resaltar que para cada neurônio temos uma função de ativação.
+Na prática, quando as redes neurais possuem muitas camadas ocultas, trata-se de \textit{deep learning}. Estas camadas ocultas também são compostas por neurônios, sendo que o valor de cada um será definido da mesma forma que nas redes neurais rasas. Na Figura \ref{fig:redesneuraisprof} temos exemplo de rede neural profunda. Um ponto importante a se observar nas redes neurais profundas é que o significado do resultado (valor) de cada neurônio existente nas camadas ocultas costuma ser obscuro, não sendo possível para nós a sua interpretação. Teremos apenas as evidências do resultado final da rede neural, que poderá melhorar ou não de acordo com a adição de mais camadas ocultas a rede \cite{goodfellow2016deep}. Também vale apena ressaltar que para cada neurônio temos uma função de ativação.
 
 \begin{figure}[h]
     \centering
@@ -476,7 +545,7 @@ Na prática, quando as redes neurais possuem muitas camadas ocultas, trata-se de
 \end{figure}
 
 
-As funções de ativação são um elemento extremamente importante das redes neurais profundas. Elas basicamente decidem se um neurônio deve ser ativado ou não. Ou seja, se a informação que o neurônio está recebendo é relevante para a informação fornecida ou deve ser ignorada. Podemos ver a fórmula abaixo, como a função de ativação é mais uma camada matemática no processamento da rede.
+As funções de ativação são um elemento extremamente importante das redes neurais profundas. Elas basicamente decidem se um neurônio deve ser ativado ou não. Ou seja, se a informação que o neurônio está recebendo é relevante para a informação fornecida ou deve ser ignorada \cite{goodfellow2016deep}. Podemos ver a fórmula abaixo, como a função de ativação é mais uma camada matemática no processamento da rede.
 
 \[ Y = Ativacao(\sum (peso * entrada) + bias) \]
 
@@ -495,7 +564,7 @@ A função Softmax é uma generalização da função sigmoide para casos não-b
 
 Existem diversos tipos de funções de ativação e esta é uma área de pesquisa ativa, à medida que a Inteligência Artificial evolui. Uma outra susubárea da redes neurais, são redes  utilizadas para trabalhar com imagens digitais, essas redes são chamadas de redes neurais convolucionais.
 
-\section{Redes Neurais Convolucional}
+\section{Redes Neurais Convolucionais}
 
 Uma Rede Neural Convolucional (ConvNet / \textit{Convolutional Neural Network} / CNN) é um algoritmo de aprendizado profundo que pode captar uma imagem de entrada, atribuir importância (pesos e vieses que podem ser aprendidos) a vários aspectos / objetos da imagem e ser capaz de diferenciar um do outro  \cite{vargas2016estudo}. O pré-processamento exigido em uma ConvNet é muito menor em comparação com outros algoritmos de classificação. Enquanto nos métodos primitivos os filtros são feitos à mão, com treinamento suficiente, as ConvNets têm a capacidade de aprender esses filtros / características \cite{vargas2016estudo}.
 
@@ -524,6 +593,11 @@ A camada de  \textit{flatten} normalmente é utilizada na divisão das 2 partes 
 
 E comun termos na rede uma camada de \textit{Dropout} que é utilizada para evitar que determinadas partes da rede neural tenham muita responsabilidade e consequentemente, possam ficar muito sensíveis a pequenas alterações. Essa camada recebe um hyper-parâmetro que define uma probabilidade de “desligar” determinada área da rede neural durante o processo de treinamento. Ao final da rede é colocada uma camada \textit{Fully connected}, onde sua entrada é a saída da camada anterior e sua saída são N neurônios, com N sendo a quantidade de classes do seu modelo para finalizar a classificação.
 
+Dentro do modelo também temos ualgunsoutros parametros que configuramos, de acordo com volume de dados. Um desses parametros é o \textit{batch size} é um hiperparâmetro que define o número de amostras a serem trabalhadas antes de atualizar os parâmetros do modelo interno. Pense em um \textit{batch size} (lote) como um \textit{loop for} que iterando sobre uma ou mais amostras e fazendo previsões. No final do lote, as previsões são comparadas às variáveis de saída esperadas e um erro é calculado. A partir desse erro, o algoritmo de atualização é usado para melhorar o modelo, por exemplo, mover para baixo ao longo do gradiente de erro. Outro parametro importante  é o numero de \textit{epochs} (épocas) para treinamento do modelo.
+
+
+
+O número de épocas é um hiperparâmetro que define o número de vezes que o algoritmo de aprendizado funcionará em todo o conjunto de dados de treinamento. Uma época significa que cada amostra no conjunto de dados de treinamento teve a oportunidade de atualizar os parâmetros do modelo interno. Uma época é composta por um ou mais lotes.
 
 
 \chapter{TRABALHOS RELACIONADOS}
@@ -536,7 +610,7 @@ superestimam seu desempenho em um cenário do mundo real, onde os dados não ser
 pré-processado, e muito provavelmente virá de diferentes fontes. 
 Assim, são apresentados trabalhos resultantes de pesquisas sobre  processamento e classificação de imagens 3D e 2D utilizando  redes neurais convulucionais.
 
-Em Kanghan Oh o autor apresenta uma abordagem usando o modelo CNN para quatro tarefas de classificação binária diferentes com base em imagens de ressonância magnética (MRI). Os autores dividiram o trabalho em duas tarefas, usando autoencoder convolucional (CAE) baseado em aprendizagem não supervisionada para a tarefa de classificação AD (\textit{alzheimer diagnosis}) vs.NC (\textit{cognitively normal}) e aprendizagem de transferência supervisionada para resolver a tarefa de classificação pMCI vs. sMCI. Para detectar biomarcadores essenciais relacionados a AD e pMCI, os autores usaram um método de visualização baseado em gradiente que identificou os lobos temporais e parietais como regiões-chave para classificação.Os dados do experimento foram obtidos no ADNI, sendo total de  694 imagens de MRI. Com a idade dos pacientes entre 55 a 90 anos de idade. O modelo proposto obteve uma acurácia de 73,2\% \cite{oh2019classification}.
+Em Kanghan Oh o autor apresenta uma abordagem usando o modelo CNN para quatro tarefas de classificação binária diferentes com base em imagens de ressonância magnética (MRI). Os autores dividiram o trabalho em duas tarefas, usando autoencoder convolucional (CAE) baseado em aprendizagem não supervisionada para a tarefa de classificação AD (\textit{alzheimer diagnosis}) vs NC (\textit{cognitively normal}) e aprendizagem de transferência supervisionada para resolver a tarefa de classificação pMCI vs. sMCI. Para detectar biomarcadores essenciais relacionados a AD e pMCI, os autores usaram um método de visualização baseado em gradiente que identificou os lobos temporais e parietais como regiões-chave para classificação.Os dados do experimento foram obtidos no ADNI, sendo total de  694 imagens de MRI. Com a idade dos pacientes entre 55 a 90 anos de idade. O modelo proposto obteve uma acurácia de 73,2\% \cite{oh2019classification}.
 
 
 
@@ -556,12 +630,14 @@ uma idade média de 74,9 a 5,7 anos,  foram selecionados a partir da base de dad
 
 \chapter{ABORDAGEM PROPOSTA}
 
-O objetivo geral deste projeto é desenvolver, testar e avaliar uma ferramenta de Classificação de imagens de ressonância magnética que possa auxiliar na detecção da doença de Alzheimer utilizando  \textit{deep learning}. Logo,
-este Capítulo encontra-se organizado da seguinte forma: a Seção 4.1 expõe a metodologia utilizada como base para condução dos estudos realizados; a Seção 4.2 apresenta a
-estrutura sobre a qual se baseia o desenvolvimento deste trabalho, assim, descreve como
-ocorrem os processos principais envolvidos, sendo esses referentes a coleta, análise dos
-dados, recomendação gerada a partir desses e a avaliação de tais métodos; por fim, a
-Seção 4.3 destina-se a descrição dos algoritmos de recomendação utilizados.
+O objetivo geral deste projeto é desenvolver, testar e avaliar uma ferramenta de Classificação de imagens de ressonância magnética (MRI), onde foi escolhido MRI, por ter uma melhor definição e qualidade na imagem, para mais detalhes ver Seção 2.3
+, que possa auxiliar na detecção da doença de Alzheimer utilizando  \textit{deep learning}. Logo,
+este Capítulo encontra-se organizado da seguinte forma: a Seção 4.1 expõe a metodologia utilizada como base para condução dos estudos realizados; a Seção 4.2 apresenta a  origin dos dados utilizados
+a qual se baseia o desenvolvimento deste trabalho; a Seção 4.3 descreve como
+foi realizado pre-processamento dos dados que foram utilizados no desenvolvimento do trabalho; Na
+Seção 4.4 descreve a arquitetura do modelos desenvolvido juntamente com as tecnologias e conceitos de \textit{deep learning}; Por fim na
+Seção 4.5  Descrevemos o resutados juntamnte com testes e métricas que forma rodadas
+com os dados proposto.
 
 
 \section{Metodologia}
@@ -601,6 +677,15 @@ pessoas com MCI cedo ou tarde, e pessoas com AD cedo. A duração do acompanhame
 cada grupo é especificado nos protocolos para ADNI-1, ADNI-2 e ADNI-GO. Temas
 originalmente recrutado para ADNI-1 e ADNI-GO tinha a opção de ser seguido no ADNI-2.
 Para informações atualizadas, consulte http://www.adni-info.org.
+
+Os dados do ADNI que nos utilizado dentro do modelo proposto foi
+um conjunto de dados que tem o tamanho de 2.603 imagens volumétricas marcadas com pacientes diagnosticados com doença de Alzheimer (DA) e com pacientes cognitivamente normais (NC). O conjunto de dados está dividido em 924 ressonâncias magnéticas de pessoas saudáveis e 1679 pessoas com diagnóstico de DA. Todas MRI são rotuladas com o diagnóstico. A idade dos pacientes varia de 50 a 89 anos, divididos em homens e mulheres. Essa base de dados foi seleciona por ja possuir tratamento e correção  feita na aquisição da imagem. E também por que foi indicado pelo 
+laboratorio  Zimmer \footnote[1]{https://zimmer-lab.org/} 
+
+
+
+
+
 
 \section{Pré-processamento de dados}
 Utilizamos as Ferramentas Avançadas de Normalização (ANTs) [add referencia] versão 2.1.0 para extrair e normalizar as imagens do cérebro. Como este não é o foco de nossa pesquisa, nosso pipeline foi baseado em \textit{scripts} \footnote[1]{Especificamente,  \textit{scripts} antsBrainExtraction.sh and antsRegistrationSyNQuick.sh}
@@ -684,10 +769,10 @@ Nonlinear Asymmetric})}
 Para ajudar no processo de segmentação também foi utuilizado a ferramenta \textit{Medical Imaging NetCDF Toolkit} (MINC-TOOLKIT) também foi utilizado no processo de segmentação. O formato de arquivo MINC, bibliotecas e ferramentas fornecem uma estrutura para a manipulação de imagens médicas, independentemente da modalidade. O MINC 1.0 foi criado em 1993 para atender às necessidades da comunidade de pesquisa de imagens do cérebro. 
 Os arquivos MINC 1.0 definem um sistema de coordenadas "voxel" 
 e uma transformação em um "mundo" ou sistema de coordenadas estereotáxicas.
-Os dados Voxel podem incluir uma conversão de faixa opcional de um formato de
-armazenamento inteiro para um formato de memória de ponto flutuante [12].
+Os dados do "Voxel" podem incluir uma conversão de faixa opcional de um formato de
+armazenamento inteiro para um formato de memória de ponto flutuante.
 
- No processo de segmentação, foi necessário converter MRI no formato NIFTI (.nii) para extensão (.mnc), para usar MINC,
+No processo de segmentação, foi necessário converter MRI no formato NIFTI (.nii) para extensão (.mnc), para usar MINC,
 e então a máscara foi aplicada para remover o crânio do cérebro na 
 imagem que, em nosso contexto de análise da doença de Alzheimer não é necessário. Após o processo de segmentação e normalização do cérebro, a imagem de saída tem a mesma dimensões como o atlas, ou seja, 193×229×193.
 
@@ -700,91 +785,139 @@ a LeNet-5. A arquitetura LeNet-5 CNN é composta por 7 camadas. A composição d
  A LeNet-5 é tida como uma rede \textit{shallow} (rasa) quando comparada com as arquiteturas  modernas, porem e importante resaltar que mesmo arquitetura simples é possivel alcansar bons resultados \cite{lecun2015lenet}.
 
 Na arquitetura proposta temos 7 camadas, assim como na arquitetura LeNet-5, porem algumas modificaçoes foram feitas. Basicamente o nosso modelo, foi composto das seguintes camadas
-. Camada C1 (camada 1)  é composta por uma camada de convulução com um \textit{kernel} (3x3x3) e 62 neurônios de entrada.
+. Camada C1 (camada 1)  é composta por uma camada de convulução com um \textit{kernel} (3x3x3) e 62 neurônios de entrada. Na segunda camada C2 temos
+32 neurônios, na proxima camada temos um \textit{MaxPooling} com um \textit{pool} de 3, pois foi mesmo que utilizamos na camada de convulução.
+A operação de \textit{MaxPooling} retira o maior elemento de determinada matrix, (considerando o tamanho do \textit{pool} aplicado). Posteriormente, é feito um deslizamento considerado um parametro de \textit{stride} para aplicação de uma nova operação.
 
-Naturalmente, a ultima camada temos uma camada com uma função de ativação sigmoide, pois no modelo proposto realizamos uma classficação binaria. 
+
+Também adicionamos \textit{batch
+normalization}  para todas as camadas convolucionais e totalmente conectadas. A normalização em lote  (\textit{batch
+normalization})
+ é uma técnica de normalização feita entre as camadas de uma rede neural em vez de nos dados brutos . Isso é feito em minilotes em vez de no conjunto de dados completo. Serve para agilizar o treinamento e 
+utilizar taxas de aprendizado mais elevadas, facilitando o aprendizado \cite{ioffe2015batch}.
+Todas as funções de ativação
+ções foram unidades lineares retificadas (ReLU) , definidas como  $$ f (x) = max (0, x)  $$ , exceto para o
+saída de classificação, que era uma função sigmoid. Finalmente, o número exato de camadas
+ou profundidade variou de acordo com o padrão de rede adotado.
 
 
-Todas as arquiteturas de rede e sua otimização foram implementadas usando Keras e Tensorflow (ou seja, a versão mais recente do repositório de código) TensorFlow [15], que é uma biblioteca de código aberto criada para aprendizado de máquina, computação numérica e muitas outras tarefas. Foi desenvolvido pelo Google \cite{abadi2016tensorflow}.
+Naturalmente, como na última camada temos uma camada com uma função de ativação sigmoid, pois no modelo proposto realizamos uma classficação binaria dos dados. A função sigmoid tem como característica produzir valores entre [0,1] como já mencionamos anteriormente, com isso conseguimos de foma binária (ativando vs não ativando) termos duas saidas proposta pelo modelo pessoas com AD ou pessoas normais AC . A função de ativação sigmoid e definida por  $$ \sigma '(x) = \ sigma (x) (1 - \ sigma (x)) $$
 
-Python 3.8.5, CUDA 7.5 e CuDNN 5. 
-Além disso, usamos o scikit-learn 0.24.0 , numpy 1.16.4 e matplotlib 3.3.4. 
 
+Na Figura  \ref{fig:cnnmodel}, temos  exemplo do modelo realizado com a abstração de algumas camadas ocultas, porem podemos ter uma ideia do modelo implementado. 
+Podemos ver  que \textit{input} de entrada para rede é o "voxel". voxel é um elemento de volume ( pixel volumétrico ) que representa um valor no espaço tridimensional (expresso em unidades de  ${mm^3}$ ), correspondendo a um pixel para uma dada espessura de corte \cite{watkins2001structural}.
 
 \begin{figure}[h]
     \centering
-    \caption{Redes neural convolutional}
+    \caption{Exemplo do Modelo CNN implementado}
     \includegraphics[scale=0.20]{cnn3d.png}
     \centerline{Fonte: autor}
-    \label{fig:cnn}
+    \label{fig:cnnmodel}
 \end{figure}
 
 
-\section{Desepenho}
 
-\section{Resultados}
+Toda a arquitetura da rede e sua otimização foram implementadas usando Keras \footnote[1]{https://keras.io/}  e  Tensorflow \footnote[2]{https://www.tensorflow.org/}  (ou seja, a versão mais recente do repositório de código) TensorFlow  , que é uma biblioteca de código aberto criada para aprendizado de máquina, computação numérica e muitas outras tarefas. Foi desenvolvido pelo Google \cite{abadi2016tensorflow}. Também  foi utilizado  TensorFlow-GPU, que é uma extensão do TensorFlow para trabalhar com GPUs e poder utilizar  recursos do desenvolvimento com CUDA. 
 
-
-Para o nosso trabalho, usamos 80\% dos dados no conjunto de dados como um conjunto de treinamento e 20% como um conjunto de dados de teste.
+Toda implementação do modelo desenvolvido utilizando liguagem de programação Python 3.8.5, CUDA 7.5 e CuDNN 5. Além disso, usamos algumas bibliotecas auxiliares como scikit-learn 0.24.0 , numpy 1.16.4 e matplotlib 3.3.4. 
 
 
-No artigo, também usamos outras métricas para avaliar nosso modelo de classificação, Receiver Operating Characteristic Curve (ROC).
+
+Todos os experimentos foram conduzidos usando a seguinte configuração de hardware, 2 x (Intel Xeon E5-2650 v3 Haswell (Q3'14), 2,3 GHz) com 20 núcleos (10 por CPU), totalizando 100 núcleos e 200 threads, 128 GB DDR4 RAM, 2 x (NVIDIA TeslaK80, Kepler, 2 x 2496 Threads CUDA) de memória GPU.
+
+
+
+\section{Resultados e Métricas}
+
+Esta Seção apresenta os resultados dos experimentos  realizados
+nesse trabalho e tambem algumas metricas extraídas. Ao longo dos experimentos, diversas combinações de técnicas foram usadas para tratar os dados e parametrizar modelos, buscando o melhor desempenho na classificação. Para o nosso trabalho, usamos utilizamos o método de \textit{Holdout}. O \textit{Holdout}  divide o seu conjunto de dados em 80-20 de maneira aleatória. Onde o 80 representa 80\% do seu conjunto de dados, que por sua vez será usado para treinar seu modelo e 20 os 20\% restantes para testar sua performance e validação \cite{kim2009estimating}.
+
+Na Tabela \ref{results}  podemos verificar os resultados dos experimento do metodo proposto.
+Tivemos alguns parametros que foram configurados de acordo com analise interaçoes de testagem do método. os  valores de \textit{epochs} aplicados foram respectivamente  $2,4,6$. Também foi atributido os valores de  \textit{batch\_size}  $4,6,8$.
+
+
+
+\begin{table}[h]
+ \begin{center}
+ \caption{Tabela com  de Confusão da doença de }
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+Épocas & Acurácia & AUC    & Sensibilidade & Especificidade \\ \hline
+2     & 0.8443    &  0.6427    &  0.5732                & 0.6341                \\ \hline
+4     & \textbf{0.8873}    & \textbf{0.6813} & \textbf{0.5952}        & \textbf{0.6452}         \\ \hline
+6     & 0.79245   & 0.6221       &    0.6529           &     0.6257            \\ \hline
+\end{tabular}
+   \label{results}
+\end{center}
+\caption{Fonte: Acervo Pessoal}
+\end{table}
+
+As métricas analisadas foram  acurácia, sensibilidade, especificidade. A acurácia é a proximidade de um resultado com o seu valor de referência real. Dessa forma, quanto maior a acurácia, mais próximo da referência ou valor real é o resultado encontrado \cite{monico2009acuracia}
+.Também usamos outras métricas para avaliar nosso modelo de classificação, Receiver Operating Characteristic Curve (ROC).
 A curva ROC mostra o quão bom o modelo criado pode distinguir entre duas coisas.
-Uma curva ROC traça "Taxa de verdadeiro positivo versus taxa de falso positivo" em diferentes limites de classificação
-Foi utilizado e também calculamos o valor da AUC métrica (área sob a curva ROC), onde obtivemos um valor de
-0,68 AUC. Na figura podemos ver a curva ROC.
+Uma curva ROC traça "Taxa de verdadeiro positivo versus taxa de falso positivo"  em diferentes limites de classificação.
+Foi utilizado e também o calculo do valor da AUC métrica (área sob a curva ROC), onde obtivemos um valor de
+0,68 AUC. Na Figura  \ref{fig:rocCurve} podemos ver a curva ROC.
 Acreditamos que os resultados podem melhorar,
 embora para validar esta teoria sejam necessários mais experimentos.
 
-\begin{table}[h!]
-
-    \centering
-    \caption{Resultados do método proposto}
-    \begin{tabular}{ll}
-
-    \hline
-    \textbf{Metric} & \textbf{Result} \\ \hline
-    Accuracy & 0.8873  \\
-    AUC & 0.6813  \\
-    Sensitivity & 0.5752  \\
-    Specificity & 0.6352  \\
-    Precision &  0.7140  \\
-    \hline
-    \end{tabular}
-    \label{results}
-\end{table}
-
 
 
 \begin{figure}[h]
     \centering
-    \caption{Redes neural convolutional}
+    \caption{Curva ROC do Modelo Prosposto CNN 3D}
     \includegraphics[scale=0.40]{ROC8.jpeg}
-    \centerline{Fonte: autor}
-    \label{fig:cnn}
+    \centerline{Fonte: Acervo Pessoal}
+    \label{fig:rocCurve}
 \end{figure}
+
 
 
 
 
 
 \chapter{Conclusão}
-AD é um distúrbio crítico, para o qual ainda não há cura, matando mais pessoas do que o peito.
-câncer e câncer de próstata combinados; entre 2000 e 2015, as mortes por AD têm
-aumentou 123\% [4]. O diagnóstico precoce é atualmente a esperança mais fundamental para os pacientes,
-beneficiando seu tratamento e seus planos para o futuro. A ressonância magnética é uma
-tal abordagem que poderia ajudar os especialistas a diagnosticar esta doença o mais rápido possível,
-com o diagnóstico computadorizado de demência (CADDementia) [9], lançando um desafio
-protocolo de avaliação padronizado para esta difícil tarefa.
-Usando dados da ADNI [54], otimizamos uma rede neural convolucional em 3D com
-toda a imagem do cérebro como input, e a melhor precisão foi alcançada com uma rede
-arquitetura baseada em VGG [68]. Nosso método, denominado ADNet, alcançou resultados interessantes,
-superando uma série de outros sistemas na técnica anterior. Além disso, nosso método com
-A adaptação do domínio, chamada ADNet-DA, atingiu 52,3% de precisão no CADDementia
-teste de desafio, superando a maioria das submissões a este desafio, todas elas usando
-informações prévias sobre a doença. É importante observar que estas abordagens são
-completamente automático (ou seja, não há necessidade de intervenção manual), e, em comparação
-ao estado da arte, também são consideravelmente rápidos.
+
+Este trabalho propôs o desenvolvimento de um modelo de \textit{deep learning}, que pode classificar imagens de MRI,
+utilizando pre-processamento de imagem, para depois realizar classificação das imagens. Para esste fim, foi proposto modelo de uma rede CNN com dados
+volumetricos, onde os dados sumetidos a rede passaram por um processo de
+normalização adquação dos dados. Tambem foi necessario  remover partes da imagem que não eram  necessarias para o objetivo do modelo. Foi realizado  extração do cranio da MRI, para poder trabalhar somente com cerebro e o volume da massa cinzenta.
+
+
+
+
+O método elaborado aplica-se com melhor desempenho em cenários de classificação
+binária, com utilização de aprendizagem supervisionada. Observando os cenários executados, percebemos os melhores resultados em cenários onde os pacientes não estão em
+uma faixa intermediária da progressão da doença (distúrbios cognitivos leves). A aplicação da segmentação nas imagens mostrou um aprimoramento considerável nos resultados,
+removendo atributos desnecessários e realçando os relevantes.
+
+
+
+
+
+
+\chapter{Trabalhos Futuros}
+
+
+Como trabalhos futuros pretende-se estender a variação deparâmetros para avaliação, como a quantidade de camadasconvolucionais da rede, a ﬁm de maximizar os resultadosobservando as métricas deﬁnidas para análise. Além disso,pretende-se realizar um estudo de uma abordagem que utilizeimagens segmentadas contendo pontos de regiões de interesseem redes convolucionais. Por ﬁm, pretende-se investigar aaplicação de técnicas de balanceamento de dados em imagenspara entrada de redes convolucionais.
+
+
+Outros interesses de experiências futuras, seria trabalhar com classificação multiclasse, também ter  diferentes fontes de dados para obter uma maior variabilidade do modelo. Usar também outros tipos de imagens, como tomografia computadorizada ou até mesmo PET-SCAN (Tomografia de Emissões Posi-tron). Outro possivel estudo seria  testar outros modelos de CNN com maiores camadas, e selecionando
+alguns areas do cérebro com auxiliode um profissional de Neurociência. Outros objetivos que podem ser aprimorados  para  pesquisas futuras com intuito  de termos melhor resultados e desempenho:
+
+\begin{itemize}
+ \item Devem ser pesquisadas técnicas de emsemble, visto que redes neurais consolidadas
+na literatura estão sendo utilizadas em conjunto para gerar melhores resultados.
+
+ \item Utilizar  processamento paralelo e distribuído para o pre-processamento das imagens, fazendo essa parte ter processmento mais
+ rapido e que facilite normalização e segmentação das imagens.
+
+\item Utilizar a técnica de cross-validation no conjunto de teste.
+
+\end{itemize}
+
+
+
 
 
 % carrega o arquivo com as bibliografias e põe o capítulo com as referências neste lugar
