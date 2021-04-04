@@ -134,7 +134,9 @@ Alzheimer's disease stands out because of its lethality and, consequently, its n
 % lista de abreviaturas e siglas
 \begin{listofabbrv}{SPMD}
         \item[AD]  \textit{Alzheimer’s disease}
+        \item[ACC] \textit{Accuracy}
         \item[ADNI ]\textit{Alzheimer’s Disease Neuroimaging Initiative}
+        \item[DICOM ]\textit{Digital Imaging and Communications in Medicine}
         \item[ML] \textit{Machine Learning}
         \item[RM] Ressonância Magnética
         \item[CNN] \textit{Convolutional neural network}
@@ -315,7 +317,12 @@ ao campo magnético em que está localizado. Assim, em 1,5 T, o hidrogênio tem 
 \end{figure}
 
 
-As imagens de RM têm maior capacidade de demonstrar diferentes estruturas no cérebro e têm facilidade em demonstrar mínimas alterações na maioria das doenças como por exemplo doença de Alzheimer. Na figura \ref{fig:ressonacia}, podemos ver exemplo da imagem gerada pela RM. A imagem por ressonância magnética é o método de diagnóstico por imagem não-invasivo mais sensível para avaliar partes moles, particularmente o encéfalo, porém trata-se de uma técnica onerosa. Ela apresenta grande potencial diagnóstico, poucos efeitos deletérios e muitos benefícios a serem obtidos com o seu uso \cite{mazzola2009ressonancia}.
+As imagens de RM têm maior capacidade de demonstrar diferentes estruturas no cérebro e têm facilidade em demonstrar mínimas alterações na maioria das doenças como por exemplo doença de Alzheimer. Na figura \ref{fig:ressonacia}, podemos ver exemplo da imagem gerada pela RM. A imagem por ressonância magnética é o método de diagnóstico por imagem não-invasivo mais sensível para avaliar partes moles, particularmente o encéfalo, porém trata-se de uma técnica onerosa. Ela apresenta grande potencial diagnóstico, poucos efeitos deletérios e muitos benefícios a serem obtidos com o seu uso \cite{mazzola2009ressonancia}. Com isso, o uso crescente dos computadores em aplicações clínicas e o desenvolvimento de novas ferramentas por dezenas de fabricantes geraram a necessidade de um método padrão para arquivamento e transferência dessas imagens e informações entre todos os dispositivos, independente do formato adotado pelo fabricante de origem, esse padrão e conhecido como DICOM \cite{grauer2009working}.
+
+
+O DICOM é um conjunto de normas criado para garantir a troca e o armazenamento seguro das imagens radiológicas. A norma foi criada com o objetivo de facilitar a interpretação das informações provenientes da digitalização dos exames médicos \cite{graham2005dicom}. Com a chegada da informática e o uso de imagens digitais em clínicas e hospitais, fez com que se tornasse necessário ter uma padronização no formato das imagens geradas pelos equipamentos. O DICOM surgiu como uma solução para a uniformização dessa comunicação \cite{mustra2008overview}. Com a padronização, todos os tipos de exames – tomografias, ressonâncias, radiografias, são armazenados em um formato único, permitindo a troca entre equipamentos de marcas distintas. A criação desse conjunto de normas possibilita que as imagens sejam reconhecidas e visualizadas em qualquer um desses equipamentos \cite{graham2005dicom}. O conjunto de normas foi criado em 1983, no Colégio Americano de Radiologia, em parceria com a Associação Nacional Elétrica Americana \cite{varma2012managing}.
+
+O DICOM também possibilita o acesso das informações em outros dispositivos. Os profissionais podem acessar as imagens e exames de pacientes em aparelhos móveis, como tablets e smartphones. Dessa forma, é possível fazer o acompanhamento e até diagnósticos prévios à distância \cite{noumeir2006benefits}. A padronização traz benefícios ainda para os exames enviados pela internet, pois as imagens não sofrem perda na qualidade, o que poderia prejudicar a interpretação feita pelos médicos. Garantir a padronização de imagens médicas já foi um desafio para as instituições de saúde \cite{noumeir2006benefits}. A variação em uma imagem, a falta de legibilidade ou de nitidez prejudicavam a avaliação dos exames e seus resultados. A criação do DICOM foi fundamental para garantir a segurança nos processos de análises radiológicas e clínicas \cite{liu2007medical}.
 
 
 
@@ -614,19 +621,86 @@ Em Kanghan Oh o autor apresenta uma abordagem usando o modelo CNN para quatro ta
 
 
 
-Ehsan Hosseini-Asl et al. propôs uma rede neural convolucional 3D profunda (3D-CNN) para classificar imagem de pessoas com AD. Os autores treinaram um autoencoder convolucional para capturar variações da forma anatômica em exames de ressonância magnética do cérebro. Após a extração dos recursos usando AE, eles realizam a classificação específica da tarefa com um 3D-CNN adaptável ao domínio de destino usando esses recursos. Os experimentos da CNN adaptável 3D (3D-ACNN) para o diagnóstico da doença de Alzheimer no conjunto de dados CADDementia MRI sem resultados de pré-processamento de remoção do crânio superam as precisões de vários classificadores comparadas em seu artigo. O programa do autor do 3D-CNN generaliza os recursos aprendidos e adaptados para outros domínios de teste no conjunto de dados ADNI \cite{hosseini2016alzheimer}.
+Ehsan Hosseini-Asl et al. propôs uma rede neural convolucional 3D profunda (3D-CNN) para classificar imagem de pessoas com AD. Os autores treinaram um autoencoder convolucional para capturar variações da forma anatômica em exames de ressonância magnética do cérebro. Após a extração dos recursos usando AE, eles realizam a classificação específica da tarefa com um 3D-CNN adaptável ao domínio de destino usando esses recursos. Os experimentos da CNN adaptável 3D (3D-ACNN) para o diagnóstico da doença de Alzheimer no conjunto de dados CADDementia MRI sem resultados de pré-processamento de remoção do crânio superam as precisões de vários classificadores comparadas em seu artigo.
+Uma das abordagem dos autores foi se concentrara na adaptação de domínio  \textit{ domain adaptation}, ou adaptação
+fonte-alvo, isso ocorre quando um classificador após o treinamento dos dados de origem são adaptados 
+aos dados de destino.
+Ao contrário do aprendizado supervisionado usual com um classificador treinado desde o início
+minimizando uma perda quantitativa total de erros no
+dados de treinamento, a adaptação do domínio minimiza a mesma perda
+sobre o domínio de destino, atualizando o classificador, que tem
+foram treinados no domínio de origem. Aproveitamos o aprendizado de recurso 
+não supervisionado para transferir recursos encontrados na fonte
+domínio para o domínio de destino, a fim de impulsionar a previsão
+desempenho dos modelos CNN com camadas profundas \cite{hosseini2016alzheimer}. O programa do autor do 3D-CNN generaliza os recursos aprendidos e adaptados para outros domínios de teste no conjunto de dados ADNI \cite{hosseini2016alzheimer}.
 
 
 
-Bae et.al desenvolveram um algoritmo baseado em CNN que usa varreduras de ressonância magnética para classificar pacientes com AD e controles CN. Os autores consideram cortes coronais de ressonância magnética cobrindo o lobo temporal medial para treinar e validar o algoritmo em diferentes etnias e níveis de educação. O conjunto de dados usado neste artigo foi um do ADNI e outro do SNUBH. Os resultados mostram áreas médias sob as curvas de 0,88-0,89 para validação de conjunto de dados, capaz de manter a alta precisão independentemente das características étnicas ou demográficas dos pacientes \cite{bae2020identification}.
+Bae et.al desenvolveram um algoritmo baseado em CNN que usa varreduras de ressonância magnética para classificar pacientes com AD e controles CN. Os autores consideram cortes coronais de ressonância magnética cobrindo o lobo temporal medial para treinar e validar o algoritmo em diferentes etnias e níveis de educação. O conjunto de dados usado neste artigo foi um do ADNI e outro do SNUBH. Os resultados mostram áreas médias sob as curvas de 0,88-0,89 para validação de conjunto de dados, capaz de manter a alta precisão independentemente das características étnicas ou demográficas dos pacientes \cite{bae2020identification}. O algoritmo de  \cite{bae2020identification} considera a escala de atrofia do lobo 
+temporal medial (MTA), que segundo os autores é amplamente utilizada na 
+prática clínica para determinar a presença de neurodegeneração 
+relacionada à DA. Esta escala também é usada como evidência neurodegenerativa para AD de acordo com as diretrizes/estrutura de pesquisa do National 
+Institute on Aging and Alzheimer's Association 18 . 
+Embora outras regiões também possam fornecer informações 
+úteis para a classificação da DA, sabe-se que há uma ligeira
+variabilidade interindividual nos padrões exatos de atrofia 19e 
+a atrofia focada no 
+lobo temporal medial (MTL) é o tipo mais comum \cite{bae2020identification}.
 
 
 Sarraf e Tofighi propôs uma arquitetura de aprendizagem (LeNet) que foi treinada e testada com imagens AD e NC. Os autores realizaram o pré-processamento dos dados e, em seguida, o treinamento dos dados. Eles usam o conjunto de dados ADNI.Os dados utilizados estão no modelo 2D. 
 Para o estudo, foram selecionados 30 pacientes com doença de Alzheimer (DA) e
 idosos normais (24 mulheres e 19 homens)  com
-uma idade média de 74,9 a 5,7 anos,  foram selecionados a partir da base de dados do ADNI. O modelo testado  teve resultado de precisão de 96,4\% \cite{sarraf2016classification}.
+uma idade média de 74,9 a 5,7 anos,  foram selecionados a partir da base de dados do ADNI.
+A arquitetura do modelo realizado pelo autores foi LeNet-5. A Rede LeNet-5 implementada para  os dados fMRI  foram imagens 2D em JPEG usando o pacote de Neuroimaging Nibabel (http://nipy.org/nibabel/) e Python OpenCV
+(opencv.org). Em seguida os autores, realizaram rotulagem  das imagens  para classificação binária de dados de Alzheimer vs. Normal. As imagens rotuladas foram convertidas em bancos de dados de armazenamento lmdb para alto rendimento a serem alimentados na plataforma Deep Learning.
+Os dados foram divididos em três partes: treinamento
+(60\%), validação (20\%) e teste (20\%). O número de
+épocas foi definido como 30 e o tamanho do \textit{batch\_size }/ lote foi 64. O modelo testado  teve resultado de precisão de 96,4\%, para esse trablalho os autores não utilizaram o valor de AUC \cite{sarraf2016classification}.
 
  
+\cite{rieke2018visualizing}  os autores utilizaram base de dados do ADNI. Para o estudo, os autores usaram os dados estruturais de ressonância magnética de pacientes com Alzheimer doença (AD) e controles normais (NC) da fase 1 do ADNI que foram incluídos
+na ”Coleção de ressonância magnética - Lista 1.5T padronizada - Anual 2 anos”. Para cada
+sujeito, esta coleta de dados oferece varreduras estruturais de ressonância magnética de todo o cérebro para até a três pontos de tempo (triagem, 12 e 24 meses; às vezes, várias varreduras
+por visita). Excluímos exames com transtorno cognitivo leve (MCI) e dois exames
+para o qual nosso pipeline de pré-processamento falhou. No total, nosso conjunto de dados compreende 969
+varreduras individuais (475 AD, 494 NC) de 344 indivíduos (193 AD, 151 NC).
+  
+O  modelo proposto dos autores consiste em quatro camadas convolucionais (com tamanho de filtro 3 × 3 × 3 e
+8/16/32/64 mapas de recursos) e duas camadas totalmente conectadas (128/64 neurônios; isso
+a arquitetura é inspirada em um modelo em Khvostikov et al). No modelo Nós aplicaram um \textit{batch normalization}  e \textit{pooling} após cada convolução e \textit{dropout} de 0,8 antes do
+primeira camada totalmente conectada. A rede tem dois neurônios de saída com softmax
+ativação. Treinamos com perda de entropia cruzada e o otimizador Adam (aprendendo
+taxa 0,0001, tamanho de \textit{batch\_size }/ lote 5) por 20 épocas. Antes de alimentar o cérebro, as varreduras
+rede, removemos o crânio e normalizamos cada voxel para ter média 0 e
+desvio padrão 1 em todo o conjunto de treinamento. Os autores obtiveram um valor de acuracia de
+0.78 ± 0.06 e um valor de  0.77 de AUC \cite{rieke2018visualizing}. 
+
+Na Tabela \ref{tab:comapreworker}, podemos ver uma pequena comparação dos métodos apresentados anteriormente. A tabela leva apenas a ACC, como comparativo dos métodos, por acreditarmos que como obtivemos propostas com diferentes dados e modelo de classificação podemos ter uma noção das pesquisas
+relacionadas  sobre o assunto.
+
+
+\begin{table}[h]
+\centering
+\caption{Comparação Entre Métodos Pesquisados  (ACC,\%)}
+\label{tab:comapreworker}
+\begin{tabular}{|l|l|l|}
+\hline
+\hspace{1cm} \textbf{Método}               & \textbf{Acurácia} & \textbf{Formato do Modelo/dados} \\ \hline
+Kanghan Oh               &      73\%             &  \hspace{2cm}  3D                               \\ \hline
+Ehsan Hosseini-Asl et al &    91\%                 &  \hspace{2cm}  3D                               \\ \hline
+BAE et al.               &   89\%                 & \hspace{2cm}  3D                                \\ \hline
+Sarraf e Tofighi         &    96\%               &    \hspace{2cm}  2D                              \\ \hline
+RIEKE et al              &      78\%             &  \hspace{2cm}   3D                              \\ \hline
+\end{tabular}
+\caption{Fonte: Acervo Pessoal.}
+\end{table}
+
+
+
+
+
+
 
 \chapter{ABORDAGEM PROPOSTA}
 
@@ -823,7 +897,7 @@ Toda implementação do modelo desenvolvido utilizando liguagem de programação
 
 
 
-Todos os experimentos foram conduzidos usando a seguinte configuração de hardware, 2 x (Intel Xeon E5-2650 v3 Haswell (Q3'14), 2,3 GHz) com 20 núcleos (10 por CPU), totalizando 100 núcleos e 200 threads, 128 GB DDR4 RAM, 2 x (NVIDIA TeslaK80, Kepler, 2 x 2496 Threads CUDA) de memória GPU.
+Todos os experimentos foram conduzidos usando a seguinte configuração de hardware, 2 x (Intel Xeon E5-2650 v3 Haswell (Q3'14), 2,3 GHz) com 20 núcleos (10 por CPU), totalizando 100 núcleos e 200 threads, 128 GB DDR4 RAM, 2 x (NVIDIA TeslaK80, Kepler, 2 x 2496 Threads CUDA) de memória GPU.  Também foi utilizado um processador i7 com 4 cores físicos e 4 emulado, com memória RAM de 16GB e HD 2T.
 
 
 
@@ -833,7 +907,7 @@ Esta Seção apresenta os resultados dos experimentos  realizados
 nesse trabalho e tambem algumas metricas extraídas. Ao longo dos experimentos, diversas combinações de técnicas foram usadas para tratar os dados e parametrizar modelos, buscando o melhor desempenho na classificação. Para o nosso trabalho, usamos utilizamos o método de \textit{Holdout}. O \textit{Holdout}  divide o seu conjunto de dados em 80-20 de maneira aleatória. Onde o 80 representa 80\% do seu conjunto de dados, que por sua vez será usado para treinar seu modelo e 20 os 20\% restantes para testar sua performance e validação \cite{kim2009estimating}.
 
 Na Tabela \ref{results}  podemos verificar os resultados dos experimento do metodo proposto.
-Tivemos alguns parametros que foram configurados de acordo com analise interaçoes de testagem do método. os  valores de \textit{epochs} aplicados foram respectivamente  $2,4,6$. Também foi atributido os valores de  \textit{batch\_size}  $4,6,8$.
+Tivemos alguns parametros que foram configurados de acordo com analise interaçoes de testagem do método. os  valores de \textit{epochs} aplicados foram respectivamente  $2,4,6$. Também foi atributido os valores de  \textit{batch\_size}  $4,6,8$. O \texit{dropout} utilizado em todos os treinamentos e testes foi de 0.2. O melhor resultado que obtivemos foi como mostra em destaque na tabela \ref{results}. Com configuração de parâmetros com os valores de  4  \textit{epochs} , \textit{batch\_size} 6 e \texit{dropout} 0.2. 
 
 
 
@@ -844,8 +918,10 @@ Tivemos alguns parametros que foram configurados de acordo com analise interaço
 \hline
 Épocas & Acurácia & AUC    & Sensibilidade & Especificidade \\ \hline
 2     & 0.8443    &  0.6427    &  0.5732                & 0.6341                \\ \hline
-4     & \textbf{0.8873}    & \textbf{0.6813} & \textbf{0.5952}        & \textbf{0.6452}         \\ \hline
+\textbf{4 }    & \textbf{0.8873}    & \textbf{0.7813} & \textbf{0.6652}        & \textbf{0.6554}         \\ \hline
 6     & 0.79245   & 0.6221       &    0.6529           &     0.6257            \\ \hline
+
+8    & 0.72245   & 0.5913       &    0.6167           &     0.59,42            \\ \hline
 \end{tabular}
    \label{results}
 \end{center}
@@ -853,11 +929,10 @@ Tivemos alguns parametros que foram configurados de acordo com analise interaço
 \end{table}
 
 As métricas analisadas foram  acurácia, sensibilidade, especificidade. A acurácia é a proximidade de um resultado com o seu valor de referência real. Dessa forma, quanto maior a acurácia, mais próximo da referência ou valor real é o resultado encontrado \cite{monico2009acuracia}
-.Também usamos outras métricas para avaliar nosso modelo de classificação, Receiver Operating Characteristic Curve (ROC).
+.Também usamos outras métricas para avaliar nosso modelo de classificação, \textit{Receiver Operating Characteristic Curve} (ROC).
 A curva ROC mostra o quão bom o modelo criado pode distinguir entre duas coisas.
 Uma curva ROC traça "Taxa de verdadeiro positivo versus taxa de falso positivo"  em diferentes limites de classificação.
-Foi utilizado e também o calculo do valor da AUC métrica (área sob a curva ROC), onde obtivemos um valor de
-0,68 AUC. Na Figura  \ref{fig:rocCurve} podemos ver a curva ROC.
+Foi utilizado e também o calculo do valor da AUC métrica (área sob a curva ROC), onde obtivemos um valor AUC de 0,7813. Na Figura  \ref{fig:rocCurve} podemos ver a curva ROC do modelo implementado, essa, curava teve os parametros configurados com \texit{ddropout}.
 Acreditamos que os resultados podem melhorar,
 embora para validar esta teoria sejam necessários mais experimentos.
 
@@ -866,33 +941,35 @@ embora para validar esta teoria sejam necessários mais experimentos.
 \begin{figure}[h]
     \centering
     \caption{Curva ROC do Modelo Prosposto CNN 3D}
-    \includegraphics[scale=0.40]{ROC8.jpeg}
+    \includegraphics[scale=0.40]{ROCCurvemodelopro.png}
     \centerline{Fonte: Acervo Pessoal}
     \label{fig:rocCurve}
 \end{figure}
 
 
-
-
-
+De forma a comparar o metodo porposto, comparamos com metodo do trabalho de \cite{rieke2018visualizing}, onde os autores realizam  imagens de MRI, utilizando  \texit{deep learning}, mais precisamente o modelo  utiliza conseito de redes \texit{autoencoder} para realizarm a classificação, para mais detalhes ver capítulo 3. Se comparamos nosso resultado com o resultado dos autores podemos verificar que obtivemos, valores proximos de AUC, e valor superior de acurácia. Assim como nosso modelo porposto aqui, os autores \cite{rieke2018visualizing}, também utilizaram base de dados ADNI e eles tambem uitlizaram como parametro de entrada voxel para o modelo de treinamento implementado. Diferença que podemos observar nos trabalhos é parte de pré-processameto das imagens onde tivemos duas abordagens diferentes.
 
 \chapter{Conclusão}
 
 Este trabalho propôs o desenvolvimento de um modelo de \textit{deep learning}, que pode classificar imagens de MRI,
 utilizando pre-processamento de imagem, para depois realizar classificação das imagens. Para esste fim, foi proposto modelo de uma rede CNN com dados
 volumetricos, onde os dados sumetidos a rede passaram por um processo de
-normalização adquação dos dados. Tambem foi necessario  remover partes da imagem que não eram  necessarias para o objetivo do modelo. Foi realizado  extração do cranio da MRI, para poder trabalhar somente com cerebro e o volume da massa cinzenta.
+normalização e adquação dos dados. Também foi necessario  remover partes da imagem que não eram  necessarias para o objetivo do modelo. Foi realizado  extração do crânio da MRI, para poder trabalhar somente com cerebro e o volume da massa cinzenta. Acreditamos que o estudo e método proposto, possa ser grande ajuda para futuras aplicações na aréa de processamento digital de imagens jutamente com  Inteligência artificial. Uma outra aplicação para esse  estudo é facilitar o
+processo de triagem de pacientes, além de
+possibilitar a formação de uma base de imagens 
+que pode ser utilizada para o acompanhamento do paciente,
+para possíveis estudos sobre o tipos de demência  e também sobre doenças de Alzheimer.
 
 
 
 
 O método elaborado aplica-se com melhor desempenho em cenários de classificação
 binária, com utilização de aprendizagem supervisionada. Observando os cenários executados, percebemos os melhores resultados em cenários onde os pacientes não estão em
-uma faixa intermediária da progressão da doença (distúrbios cognitivos leves). A aplicação da segmentação nas imagens mostrou um aprimoramento considerável nos resultados,
-removendo atributos desnecessários e realçando os relevantes.
+uma faixa intermediária da progressão da doença (distúrbios cognitivos leves). A aplicação da segmentação nas imagens mostrou um aprimoramento considerável nos resultados, removendo atributos desnecessários e realçando os relevantes.
 
 
-
+Devo comentar que as dificuldades também compõem a conclusão do método e testes desenvolvidos. O grande problema em trabalhar com
+modelos 3D de dados é capacidade de  \texit{hardware} limitada para implementação do modelo, o que acaba atrapalhando muito na busca de melhores resultados. 
 
 
 
