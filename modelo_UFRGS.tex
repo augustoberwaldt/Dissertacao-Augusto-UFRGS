@@ -833,7 +833,7 @@ Seção 4.5  Descrevemos o resutados juntamnte com testes e métricas que forma 
 
 
 \section{Metodologia}
-Neste capítulo, fornecemos detalhes de nosso pipeline, incluindo o pré-processamento de imagens MRI no formato 3D,
+Neste capítulo, fornecemos detalhes da nossa implementação da proposta, incluindo o pré-processamento de imagens MRI no formato 3D,
 a arquitetura da rede CNN, técnicas e ferramentas de otimização. Em particular, é importante destacar a
 razão pela qual não utilizamos imagens em seu espaço original, e a necessidade de utilizar um padrão no formato dos dados.
 Mesmo que as camadas convolutivas possam operar sobre dados com dimensões variáveis.
@@ -842,13 +842,18 @@ padrões discriminatórios invariantes a uma série de transformações, tais co
 escala e rotação. Isto exigiria ter modelos com mais camadas, com tempos de treinamento crescentes,
 e um número ainda maior de amostras, com todas as variações esperadas. Ao registrar nossas
 imagens a um modelo padrão, podemos esperar que estruturas similares estejam aproximadamente no
-mesma localização espacial, portanto podemos lidar com toda a imagem de uma só vez, e automaticamente
+mesma localização espacial, portanto podemos lidar com toda a imagem de uma só vez e automaticamente
 determinar as regiões de interesse mais importantes.
+
+
+Dentro do desenvolvimento da pesquisa realizada, foi analisado alguns conjutos de dados para realizaçao da proposta. Um dos \textit{dataset}, pesquisado foi o oasis-brains \footnote{www.oasis-brains.org}, onde esse \textit{dataset} possui um conjunto de imagens tanto de MRI quanto de PET. Também foi analisado o dataset do desafio Caddementia \footnote{www.caddementia.grand-challenge.org}, onde eles disponibilizam \textit{dataset} que vieram  de três universiades 	
+Erasmus MC, Medical Center e University of Porto. No entanto o cojunto dos dado disponivel pelo desefaio não  contem muitas MRI, todo dataset possui 509 imagens dividias em AD, NC, e MCI. Por fim  escolhemos utilozar na pesquisa o \textit{dataset} disponibilizado por ADNI, onde temos uma quantidade maior no conjuto dos dados e uma variedade  maior também com pessoas faixa etarias distintas.   
+
 
 
 \section{Dados}
 
-Os dados utilizados na preparação desta proposta foram obtidos da Iniciativa de Neuroimagem da Doença de Alzheimer (ADNI) (https://adni.loni.usc.edu). A base de dados da ADNI
+Os dados utilizados na preparação desta proposta foram obtidos da Iniciativa de Neuroimagem da Doença de Alzheimer (ADNI) \footnote{https://adni.loni.usc.edu}. A base de dados da ADNI
 foi lançado em 2003 pelo National Institute on Aging (NIA), o Instituto Nacional para o Envelhecimento
 de Imagens Biomédicas e Bioengenharia (NIBIB), a Food and Drug Administration
 (FDA), empresas farmacêuticas privadas e organizações sem fins lucrativos, como um fundo de 60 milhões de dólares,
@@ -967,7 +972,7 @@ armazenamento inteiro para um formato de memória de ponto flutuante.
 No processo de segmentação, foi necessário converter MRI no formato NIFTI (.nii) para extensão (.mnc), para usar MINC,
 e então a máscara foi aplicada para remover o crânio do cérebro na 
 imagem que, em nosso contexto de análise da doença de Alzheimer não é necessário. Após o processo de segmentação e normalização do cérebro, a imagem de saída tem a mesma dimensões como o atlas, ou seja, 193×229×193.
-
+Com isso essa foi dimensão da imagem submetida no modelo de treinamento.
 
 
 \section{Modelo proposto}
